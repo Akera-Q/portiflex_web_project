@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags - FR-05: SEO metadata & Open Graph support -->
+    <meta name="description"
+        content="PortiFlex - Create stunning professional portfolios in minutes. Customizable, responsive, and ready to impress.">
+    <meta name="keywords"
+        content="portfolio, portfolio builder, web portfolio, developer portfolio, designer portfolio, freelancer">
+    <meta name="author" content="PortiFlex Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PortiFlex - Professional Portfolio Builder">
+    <meta property="og:description"
+        content="Create stunning professional portfolios in minutes. Customizable, responsive, and ready to impress.">
+    <meta property="og:site_name" content="PortiFlex">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PortiFlex - Professional Portfolio Builder">
+    <meta name="twitter:description" content="Create stunning professional portfolios in minutes.">
+
+    <title>PortiFlex - Portfolio Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400&family=Montserrat:wght@400;500;600&family=Open+Sans:wght@300;400;600&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jQuery CDN - Requirement: jQuery (Weight: 1) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">PortiFlex</a>
+        <div class="nav-controls">
+            <button id="loginBtn" class="btn btn-secondary">
+                <i class="fas fa-user"></i> Login
+            </button>
+            <button id="saveBtn" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save Portfolio
+            </button>
+            <button id="exportBtn" class="btn btn-success">
+                <i class="fas fa-download"></i> Export
+            </button>
+            <button id="importBtn" class="btn btn-info">
+                <i class="fas fa-file-import"></i> Import
+            </button>
+        </div>
+    </nav>
+
+    <!-- Customization Controls -->
+    <div class="customization-panel">
+        <!-- Content -->
+        <div class="control-group">
+            <h3><i class="fas fa-edit"></i> Content</h3>
+            <div class="control-row">
+                <label>Your Name:</label>
+                <input type="text" id="userName" placeholder="e.g. Ebrahem Eltemsahy, Mohammed AbdElhakim"
+                    value="Ebrahem Eltemsahy, Mohammed AbdElhakim">
+            </div>
+            <div class="control-row">
+                <label>Your Title:</label>
+                <input type="text" id="userTitle" placeholder="Web Developer" value="Web Developer">
+            </div>
+            <div class="control-row">
+                <label>About Text:</label>
+                <textarea id="aboutText" rows="3"
+                    placeholder="Tell people about yourself...">Passionate web developer...more stuff</textarea>
+            </div>
+            <div class="control-row">
+                <label>Contact Text:</label>
+                <textarea id="contactText" rows="2"
+                    placeholder="Contact information...">Feel free to reach out for BUISNESS or just a friendly hello!</textarea>
+            </div>
+        </div>
+
+        <!-- Text Effects -->
+        <div class="control-group">
+            <h3><i class="fas fa-text-height"></i> Text Effects</h3>
+            <div class="control-row">
+                <label>Title Shadow:</label>
+                <select id="textShadow">
+                    <option value="none">None</option>
+                    <option value="soft">Soft</option>
+                    <option value="hard">Hard</option>
+                    <option value="glow">Glow</option>
+                    <option value="neon">Neon</option>
+                </select>
+            </div>
+            <div class="control-row">
+                <label>Title Animation:</label>
+                <select id="textAnimation">
+                    <option value="none">None</option>
+                    <option value="fadeIn">Fade In</option>
+                    <option value="slideUp">Slide Up</option>
+                    <option value="typewriter">Typewriter</option>
+                    <option value="bounce">Bounce</option>
+                    <option value="pulse">Pulse</option>
+                </select>
+            </div>
+            <div class="control-row">
+                <label>Text Gradient:</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="textGradient">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Layout Controls -->
+        <div class="control-group">
+            <h3><i class="fas fa-layer-group"></i> Layout</h3>
+            <div class="control-row">
+                <label>Hero Height:</label>
+                <input type="range" id="heroHeight" min="50" max="100" value="100" class="skill-slider">
+            </div>
+            <div class="control-row">
+                <label>Projects Grid:</label>
+                <select id="projectsGridCols">
+                    <option value="auto">Auto Fit</option>
+                    <option value="2">2 Columns</option>
+                    <option value="3">3 Columns</option>
+                    <option value="4">4 Columns</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Preview -->
+    <div class="portfolio-preview">
+        <div class="preview-header">
+            <h2><i class="fas fa-eye"></i> Live Preview</h2>
+            <button id="refreshPreview" class="btn btn-small">
+                <i class="fas fa-external-link-alt"></i> Preview Mode
+            </button>
+        </div>
+
+        <div class="portfolio-container" id="portfolioContainer">
+            <!-- Hero Section -->
+            <section class="portfolio-section hero-section" id="heroSection">
+                <div class="hero-content">
+                    <h1 id="displayName" contenteditable="true">Ebrahem</h1>
+                    <p id="displayTitle" contenteditable="true">Web Developer</p>
+                    <div class="hero-buttons">
+                        <a href="#projectsSection" class="btn btn-primary">View My Work</a>
+                        <a href="#contactSection" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="portfolio-section about-section draggable-section" id="aboutSection" draggable="true">
+                <div class="section-controls">
+                    <div class="section-drag-handle" title="Drag to reorder"><i class="fas fa-grip-lines"></i></div>
+                    <button class="section-style-btn" data-section="about" title="Edit Style"><i
+                            class="fas fa-palette"></i></button>
+                </div>
+                <div class="section-content">
+                    <h2 class="section-title" contenteditable="true">About Me</h2>
+                    <p id="displayAbout" contenteditable="true">
+                        Passionate web dev...nobody cares about this text, but still, here it is.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="portfolio-section projects-section draggable-section" id="projectsSection" draggable="true">
+                <div class="section-controls">
+                    <div class="section-drag-handle" title="Drag to reorder"><i class="fas fa-grip-lines"></i></div>
+                    <button class="section-style-btn" data-section="projects" title="Edit Style"><i
+                            class="fas fa-palette"></i></button>
+                </div>
+                <div class="section-content">
+                    <h2 class="section-title" contenteditable="true">My Projects</h2>
+                    <div class="projects-grid" id="projectsGrid">
+                        <!-- Projects will be added here -->
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-small" id="addProjectBtn">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="portfolio-section skills-section draggable-section" id="skillsSection" draggable="true">
+                <div class="section-controls">
+                    <div class="section-drag-handle" title="Drag to reorder"><i class="fas fa-grip-lines"></i></div>
+                    <button class="section-style-btn" data-section="skills" title="Edit Style"><i
+                            class="fas fa-palette"></i></button>
+                </div>
+                <div class="section-content">
+                    <h2 class="section-title" contenteditable="true">Skills</h2>
+                    <div class="skills-grid" id="skillsGrid">
+                        <!-- Skills will be added here -->
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-small" id="addSkillBtn">
+                            <i class="fas fa-plus"></i> Add Skill
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="portfolio-section contact-section" id="contactSection">
+                <div class="section-controls">
+                    <button class="section-style-btn" data-section="contact" title="Edit Style"><i
+                            class="fas fa-palette"></i></button>
+                </div>
+                <div class="section-content">
+                    <h2 class="section-title" contenteditable="true">Get In Touch</h2>
+                    <p id="displayContact" contenteditable="true">
+                        Feel free to reach out for BUISNESS MATE! Or just a friendly hello &lbbrk;do not &rbbrk;!
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:example@email.com" class="contact-link"
+                                contenteditable="true">example@email.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/example" target="_blank" class="contact-link"
+                                contenteditable="true">github.com/example</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://linkedin.com/in/example" target="_blank" class="contact-link"
+                                contenteditable="true">linkedin.com/in/example</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Authentication</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="auth-tab" data-tab="signup">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <div id="loginError" class="error-message"></div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <div class="auth-links">
+                    <p>Don't have an account? Sign up above!</p>
+                    <p class="auth-hint">Your data is stored securely in the database.</p>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="Min. 6 characters" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+                </div>
+                <div id="signupError" class="error-message"></div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content modal-enhanced">
+            <div class="modal-header">
+                <h3 id="projectModalTitle"><i class="fas fa-folder-plus"></i> Add Project</h3>
+                <button class="modal-close" id="closeProjectModal">&times;</button>
+            </div>
+            <form id="projectForm" class="modal-form">
+                <div class="form-group">
+                    <label><i class="fas fa-heading"></i> Project Title</label>
+                    <input type="text" id="projectTitle" placeholder="My Awesome Project" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-align-left"></i> Description</label>
+                    <textarea id="projectDescription" rows="3" placeholder="Describe what this project does..."
+                        required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group form-half">
+                        <label><i class="fas fa-link"></i> Link URL</label>
+                        <input type="text" id="projectLink" placeholder="https://...">
+                    </div>
+                    <div class="form-group form-half">
+                        <label><i class="fas fa-tags"></i> Tags</label>
+                        <input type="text" id="projectTags" placeholder="HTML, CSS, JS">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelProject"><i class="fas fa-times"></i>
+                        Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Skill Modal -->
+    <div class="modal" id="skillModal">
+        <div class="modal-content modal-enhanced modal-compact">
+            <div class="modal-header">
+                <h3><i class="fas fa-star"></i> Add Skill</h3>
+                <button class="modal-close" id="closeSkillModal">&times;</button>
+            </div>
+            <form id="skillForm" class="modal-form">
+                <div class="form-group">
+                    <label><i class="fas fa-code"></i> Skill Name</label>
+                    <input type="text" id="skillName" placeholder="e.g., JavaScript, React, Python" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-chart-bar"></i> Proficiency Level</label>
+                    <div class="skill-slider-container">
+                        <input type="range" id="skillLevel" min="1" max="10" value="5" class="skill-slider">
+                        <div class="skill-level-display">
+                            <span id="skillLevelValue">5</span><span>/10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelSkill"><i class="fas fa-times"></i>
+                        Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Skill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Section Style Modal -->
+    <div class="modal" id="sectionStyleModal">
+        <div class="modal-content modal-enhanced modal-compact">
+            <div class="modal-header">
+                <h3><i class="fas fa-paint-brush"></i> <span id="sectionStyleTitle">Edit Section Style</span></h3>
+                <button class="modal-close" id="closeSectionStyleModal">&times;</button>
+            </div>
+            <div class="modal-form">
+                <div class="form-group">
+                    <label><i class="fas fa-fill-drip"></i> Background Color</label>
+                    <div class="color-picker-row">
+                        <input type="color" id="sectionBgColor" value="#ffffff" class="color-picker-large">
+                        <span class="color-value" id="bgColorValue">#ffffff</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-font"></i> Text Color</label>
+                    <div class="color-picker-row">
+                        <input type="color" id="sectionTextColor" value="#333333" class="color-picker-large">
+                        <span class="color-value" id="textColorValue">#333333</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-heading"></i> Heading Font</label>
+                    <select id="sectionHeadingFont">
+                        <option value="Poppins">Poppins</option>
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Playfair Display">Playfair Display</option>
+                        <option value="Lora">Lora</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelSectionStyle">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="applySectionStyle"><i class="fas fa-check"></i>
+                        Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="importFile" accept=".json" style="display:none">
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "Build Your Perfect Portfolio",
+    "subtitle": "Create stunning, customizable portfolios in minutes. No coding required.",
+    "ctaGuest": "Try as Guest",
+    "ctaLogin": "Login / Sign Up"
+  },
+  "features": {
+    "title": "Why Choose PortiFlex?",
+    "items": [
+      {
+        "icon": "🎨",
+        "title": "Beautiful Themes",
+        "desc": "Choose from a variety of professionally designed themes that match your style."
+      },
+      {
+        "icon": "✨",
+        "title": "Glass Effects",
+        "desc": "Modern glassmorphism effects built-in to give your portfolio a premium look."
+      },
+      {
+        "icon": "⚡",
+        "title": "Live Preview",
+        "desc": "See changes instantly as you edit. What you see is exactly what you get."
+      },
+      {
+        "icon": "📥",
+        "title": "Easy Export",
+        "desc": "Export your portfolio as a JSON file or save it to your account for later."
+      }
+    ]
+  },
+  "footer": {
+    "text": "© 2024 PortiFlex. All rights reserved."
+  }
+}

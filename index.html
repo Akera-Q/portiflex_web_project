@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags - FR-05: SEO metadata & Open Graph support -->
+    <meta name="description"
+        content="PortiFlex - Create stunning professional portfolios in minutes. Perfect for developers, designers, and freelancers.">
+    <meta name="keywords"
+        content="portfolio, portfolio template, web portfolio, developer portfolio, designer portfolio, freelancer portfolio">
+    <meta name="author" content="PortiFlex Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PortiFlex - Professional Portfolio Template">
+    <meta property="og:description"
+        content="Create stunning professional portfolios in minutes. Customizable, responsive, and ready to impress.">
+    <meta property="og:site_name" content="PortiFlex">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PortiFlex - Professional Portfolio Template">
+    <meta name="twitter:description" content="Create stunning professional portfolios in minutes.">
+
+    <title>PortiFlex - Build Your Perfect Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span>🎨</span> PortiFlex
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#why-us">Why Us</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title" id="hero-title">Loading...</h1>
+                <p class="hero-subtitle" id="hero-subtitle"></p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="cta-guest">
+                        <span>🚀</span> <span id="cta-guest-text">Try as Guest</span>
+                    </button>
+                    <button class="btn btn-secondary" id="cta-login">
+                        <span>👤</span> <span id="cta-login-text">Login / Sign Up</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="glass-card card-main"></div>
+                <!-- Floating elements for animation -->
+                <div class="glass-card card-float card-1">🎨</div>
+                <div class="glass-card card-float card-2">⚡</div>
+                <div class="glass-card card-float card-3"></div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2 class="section-title" id="features-title">Features</h2>
+            <div class="features-grid" id="features-grid">
+                <!-- Features will be populated by jQuery -->
+            </div>
+        </section>
+
+        <section class="testimonials-section" id="testimonials">
+            <h2 class="section-title">What Users Say</h2>
+            <div class="testimonial-container clearfix">
+                <div class="testimonial-card-wrapper">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"PortiFlex made it incredibly easy to showcase my work. The live
+                            preview feature is a game changer!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">👩‍💻</div>
+                            <span>Sarah Jenkins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-wrapper">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I built my portfolio in under 10 minutes. The glassmorphism themes
+                            look absolutely stunning."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">👨‍🎨</div>
+                            <span>Mike Chen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-wrapper">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Finally, a portfolio builder that lets me export the code and host
+                            it myself. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">🚀</div>
+                            <span>Alex Rivera</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p id="footer-text">© 2024 PortiFlex</p>
+    </footer>
+
+    <!-- jQuery Script for Landing Page -->
+    <script src="landing.js"></script>
+</body>
+
+</html>
